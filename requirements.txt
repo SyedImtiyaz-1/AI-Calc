@@ -1,7 +1,7 @@
-opencv-python
-cvzone
-numpy
-Pillow
-streamlit
-google-generativeai
+streamlit==1.39.0
+cvzone==1.6.1
+opencv-python-headless==4.10.0.84
+numpy==2.1.1
+Pillow==10.4.0
+google-generativeai==0.8.2
 protobuf==4.25.3
