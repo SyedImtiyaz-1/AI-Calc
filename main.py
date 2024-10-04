@@ -9,7 +9,7 @@ import streamlit as st
 st.set_page_config(layout="wide")
 st.title("AI Gesture Calculator")
  
-col1, col2 = st.columns([3,2])
+col1, col2 = st.columns([3, 2])
 with col1:
     run = st.checkbox('Activate Project', value=True)
     FRAME_WINDOW = st.image([])
@@ -22,11 +22,13 @@ genai.configure(api_key="AIzaSyAu7w2tMO4kIAiB-RDMh8vywmF8OqBjpQk")
 model = genai.GenerativeModel('gemini-1.5-flash')
  
 cap = cv2.VideoCapture(0)
-cap.set(3,1280)
-cap.set(4,720)
- 
+if not cap.isOpened():
+    st.error("Error: Unable to access the camera.")
+
+cap.set(3, 1280)
+cap.set(4, 720)
 detector = HandDetector(staticMode=False, maxHands=1, modelComplexity=1, detectionCon=0.7, minTrackCon=0.5)
- 
+
 def getHandInfo(img):
     hands, img = detector.findHands(img, draw=False, flipType=True)
     if hands:
@@ -55,6 +57,9 @@ def sendToAI(model, canvas, fingers):
             return "Canvas is empty. Draw something first!"
         
         pil_image = Image.fromarray(canvas)
+        if pil_image.size == (0, 0):
+            return "Canvas is empty. Draw something first!"
+        
         response = model.generate_content(["Solve this math problem", pil_image])
         return response.text
     return ""
@@ -64,7 +69,7 @@ canvas = None
 
 while True:
     success, img = cap.read()
-    if not success:
+    if not success or img is None or img.size == 0:
         st.error("Error: Unable to capture video from the camera.")
         continue
     
