@@ -1,9 +1,8 @@
-streamlit==1.39.0
+streamlit==1.45.0          # Updated to a newer compatible version
 cvzone==1.6.1
 opencv-python-headless==4.10.0.84
 numpy==2.1.1
 Pillow==10.4.0
 google-generativeai==0.8.2
-protobuf>=3.20,<4
-mediapipe==0.10.0
-opencv-python==4.10.0.84
+protobuf        # Updated version constraint
+mediapipe==0.10.15          # Updated to a newer compatible version
