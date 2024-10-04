@@ -1,4 +1,4 @@
-streamlit==1.45.0          # Updated to a newer compatible version
+streamlit      # Updated to a newer compatible version
 cvzone==1.6.1
 opencv-python-headless==4.10.0.84
 numpy==2.1.1
