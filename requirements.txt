@@ -1,0 +1,7 @@
+opencv-python
+cvzone
+numpy
+Pillow
+streamlit
+google-generativeai
+protobuf==4.25.3
