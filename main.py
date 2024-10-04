@@ -21,7 +21,7 @@ with col2:
 genai.configure(api_key="AIzaSyAu7w2tMO4kIAiB-RDMh8vywmF8OqBjpQk")
 model = genai.GenerativeModel('gemini-1.5-flash')
  
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(1)
 if not cap.isOpened():
     st.error("Error: Unable to access the camera.")
 
